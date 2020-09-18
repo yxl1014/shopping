@@ -55,7 +55,7 @@ public class Orderdao {
     }
 
     public int insertOrder(Order order) {
-        String sql = "update insert orderr (uid,cid,time) values(?,?,?)";
+        String sql = "update insert orderr (uid,cid,otime) values(?,?,?)";
         return jdbcTemplate.update(sql, order.getUid(), order.getCid(), order.getTime());
     }
 }

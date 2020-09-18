@@ -14,7 +14,7 @@ public class OrderserviceImpl {
     @Autowired
     private Orderdao orderdao;
 
-    public boolean insertCommodity(Order order) {
+    public boolean insertOrder(Order order) {
         return orderdao.insertOrder(order) != 0;
     }
 
