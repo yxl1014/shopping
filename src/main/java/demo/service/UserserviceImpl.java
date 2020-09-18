@@ -3,7 +3,6 @@ package demo.service;
 import demo.dao.Userdao;
 import demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -25,7 +24,6 @@ public class UserserviceImpl {
         return userdao.insertUser(user) != 0;
     }
 
-    @Cacheable(cacheNames = "user", key = "#user.id")
     public int updateUser(User user) {
         return userdao.updateUser(user);
     }

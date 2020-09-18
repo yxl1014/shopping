@@ -23,7 +23,6 @@ public class OrderserviceImpl {
         return orderdao.findByUserId(uid);
     }
 
-    @Cacheable(cacheNames = "order", key = "#uid")
     public int delete_Order_by_cid_from_uid(int uid, int cid) {
         return orderdao.delete_Order_by_cid_from_uid(uid, cid);
     }

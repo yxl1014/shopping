@@ -15,7 +15,7 @@ public class Userdao {
     private JdbcTemplate jdbcTemplate;
 
     public int insertUser(User user) {
-        String sql = "update insert userr (name,user,password) values(?,?,?)";
+        String sql = "update insert userr (uname,uuser,password) values(?,?,?)";
         return jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword());
     }
 
@@ -24,7 +24,7 @@ public class Userdao {
         if (jdbcTemplate.update(sql, user.getUsername(), user.getPassword()) == 0)
             return 0;
         else {
-            sql = "update insert userr (name,user,password) values(?,?,?)";
+            sql = "update insert userr (uname,uuser,password) values(?,?,?)";
             return jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword());
         }
     }

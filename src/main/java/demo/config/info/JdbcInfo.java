@@ -31,7 +31,7 @@ public class JdbcInfo {
         return filters;
     }
 
-    public Properties getConnectionProperties() {
+    public String getConnectionProperties() {
         return connectionProperties;
     }
 
