@@ -39,25 +39,25 @@ public class ServletConfig implements WebMvcConfigurer {
 
 
     //让spring 知道当前项目中的除了页面之外的静态资源都放在哪个目录下。
-    @Override
+/*    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("/js/").addResourceLocations("/js/**");
 //        registry.addResourceHandler("/css/").addResourceLocations("/css/**");
         registry.addResourceHandler("/static/*")
                 .addResourceLocations("classpath:/static/");
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LocaleChangeInterceptor())
                 .excludePathPatterns("classpath:/static/css/fonts/*.ttf")
                 .excludePathPatterns("classpath:/static/css/fonts/*.woff");
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new MappingJackson2HttpMessageConverter());
 //        converters.add(new MappingJackson2XmlHttpMessageConverter());
-    }
+    }*/
 
 }

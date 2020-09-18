@@ -29,16 +29,17 @@ public class Userdao {
         }
     }
 
-    public User finduserbyuid(int uid) {
+    public User finduserbyname(String name) {
         User user = new User();
-        String sql = "select * from userr where uid=?";
-        jdbcTemplate.query(sql, new Object[]{uid}, new RowCallbackHandler() {
+        String sql = "select uid,uname,uuser from userr where uname=?";
+        jdbcTemplate.query(sql, new Object[]{name}, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet resultSet) throws SQLException {
-                user.setId(resultSet.getInt(1));
-                user.setName(resultSet.getString(2));
-                user.setUsername(resultSet.getString(3));
-                user.setPassword(resultSet.getString(4));
+                if(resultSet.next()){
+                    user.setId(resultSet.getInt(1));
+                    user.setName(resultSet.getString(2));
+                    user.setUsername(resultSet.getString(3));
+                }
             }
         });
         return user;

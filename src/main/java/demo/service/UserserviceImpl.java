@@ -15,12 +15,12 @@ public class UserserviceImpl {
 
     public boolean insertUser(User user) {
         //用户重名校验
-        User userById = userdao.finduserbyuid(user.getId());
-        if (userById != null && userById.getName() != null && userById.getName().equals(user.getName())) {
+        User userByname = userdao.finduserbyname(user.getName());
+        if (userByname != null && userByname.getName() != null && userByname.getName().equals(user.getName())) {
             return false;
         }
         //对用户密码进行MD5,目的是，数据库中的敏感数据，不要存储明文。
-        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()).replace('+','@'));
         return userdao.insertUser(user) != 0;
     }
 
