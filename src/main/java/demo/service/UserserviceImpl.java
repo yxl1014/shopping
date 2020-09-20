@@ -20,7 +20,7 @@ public class UserserviceImpl {
             return false;
         }
         //对用户密码进行MD5,目的是，数据库中的敏感数据，不要存储明文。
-        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()).replace('+','@'));
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         return userdao.insertUser(user) != 0;
     }
 

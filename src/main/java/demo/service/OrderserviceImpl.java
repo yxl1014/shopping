@@ -27,7 +27,7 @@ public class OrderserviceImpl {
         return orderdao.delete_Order_by_cid_from_uid(uid, cid);
     }
 
-    @Cacheable(cacheNames = "order", key = "#uid")
+    @Cacheable(cacheNames = "order_all", key = "#uid")
     public ArrayList<Order> findallbyuid(int uid) {
         return orderdao.findallbyuid(uid);
     }

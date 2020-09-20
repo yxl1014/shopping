@@ -21,12 +21,12 @@ public class Userdao {
     }
 
     public int updateUser(User user) {
-        String sql = "delete from userr where username=? and password=?";
-        if (jdbcTemplate.update(sql, user.getUsername(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()).replace('+','@')) == 0)
+        String sql = "delete from userr where uuser=? and password=?";
+        if (jdbcTemplate.update(sql, user.getUsername(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes())) == 0)
             return 0;
         else {
             sql = "insert into userr (uname,uuser,password) values(?,?,?)";
-            return jdbcTemplate.update(sql, user.getName(), user.getUsername(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()).replace('+','@'));
+            return jdbcTemplate.update(sql, user.getName(), user.getUsername(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         }
     }
 

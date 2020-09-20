@@ -17,8 +17,17 @@ public class OrderController {
     @ResponseBody
     public String addCommodity(@RequestBody Order order) {
         if (orderservice.insertOrder(order))
-            return "sucess insert" + order.getOid();
+            return "sucess insert" + order.getTime();
         return "添加订单失败";
+    }
+
+    @RequestMapping(value = "delete_order", method = RequestMethod.GET)
+    @ResponseBody
+    public String deletobyuoid(@RequestParam(name = "uid") int uid, @RequestParam(name = "cid") int cid) {
+        if (orderservice.delete_Order_by_cid_from_uid(uid, cid) != 0) {
+            return "删除成功！";
+        }
+        return "删除失败！";
     }
 
     @RequestMapping(value = "findbyuid_order", method = RequestMethod.GET)
@@ -37,23 +46,15 @@ public class OrderController {
         return "无该用户订单信息！";
     }
 
-    @RequestMapping(value = "delete_order", method = RequestMethod.GET)
-    @ResponseBody
-    public String deletobyuoid(@RequestParam(name = "uid") int uid, @RequestParam(name = "oid") int oid) {
-        if (orderservice.delete_Order_by_cid_from_uid(uid, oid) != 0) {
-            return "删除成功！";
-        }
-        return "删除失败！";
-    }
 
-    @RequestMapping(value = "findall_order/{uid}", method = RequestMethod.GET)
+    @RequestMapping(value = "findallbyuid_order", method = RequestMethod.GET)
     @ResponseBody
-    public String find_all(@PathVariable(name = "uid") int uid) {
+    public String find_all(@RequestParam(name = "uid") int uid) {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("用户id:" + uid + "\n");
         ArrayList<Order> orders = orderservice.findallbyuid(uid);
         if (orders.size() != 0) {
-            for (Order order : orders) {
+            for (Order order: orders) {
                 stringBuffer.append("----------------------------------");
                 stringBuffer.append("\t订单id:" + order.getOid() + ";\n");
                 stringBuffer.append("\t商品id:" + order.getCid() + ";\n");
