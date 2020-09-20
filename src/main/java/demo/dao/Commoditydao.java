@@ -11,7 +11,7 @@ public class Commoditydao {
     private JdbcTemplate jdbcTemplate;
 
     public int insertCommodity(Commodity commodity) {
-        String sql = "update insert commodity (name,category,price) values (?,?,?)";
+        String sql = "insert into commodity (name,category,price) values (?,?,?)";
         return jdbcTemplate.update(sql, commodity.getCname(), commodity.getCategory(), commodity.getPrice());
     }
 }
