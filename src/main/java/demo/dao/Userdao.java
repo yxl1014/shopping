@@ -45,4 +45,36 @@ public class Userdao {
         });
         return user;
     }
+    public User finduserbyup(String username,String password){
+        User user=new User();
+        String sql ="select uid,uname,uuser,password from userr where uuser=? and password=?";
+        jdbcTemplate.query(sql, new Object[]{username, password}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                if(resultSet.next()){
+                    user.setId(resultSet.getInt(1));
+                    user.setName(resultSet.getString(2));
+                    user.setUsername(resultSet.getString(3));
+                    user.setPassword(resultSet.getString(4));
+                }
+            }
+        });
+        return user;
+    }
+    public User findbyid(int id){
+        User user=new User();
+        String sql ="select uid,uname,uuser,password from userr where uid=?";
+        jdbcTemplate.query(sql, new Object[]{id}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                if(resultSet.next()){
+                    user.setId(resultSet.getInt(1));
+                    user.setName(resultSet.getString(2));
+                    user.setUsername(resultSet.getString(3));
+                    user.setPassword(resultSet.getString(4));
+                }
+            }
+        });
+        return user;
+    }
 }

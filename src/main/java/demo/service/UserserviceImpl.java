@@ -27,4 +27,11 @@ public class UserserviceImpl {
     public int updateUser(User user) {
         return userdao.updateUser(user);
     }
+
+    public User finduserbyup(String usrname,String password){
+        return userdao.finduserbyup(usrname,password);
+    }
+    public User findbyid(int id){
+        return userdao.findbyid(id);
+    }
 }

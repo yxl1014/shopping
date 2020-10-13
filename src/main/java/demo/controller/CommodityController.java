@@ -1,5 +1,6 @@
 package demo.controller;
 
+import demo.config.annotation.LogRecord;
 import demo.entity.Commodity;
 import demo.service.CommodityserviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class CommodityController {
     private CommodityserviceImpl commodityservice;
 
     @RequestMapping(value = "add_commodity", method = RequestMethod.POST)
+    @LogRecord(operation = "商品操作",type = "增加商品")
     @ResponseBody
     public String addCommodity(@RequestBody Commodity commodity) {
         if (commodityservice.insertCommodity(commodity)) {
